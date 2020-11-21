@@ -237,7 +237,7 @@ public class Select {
 
     /**
      * 创建selection-class.txt
-     * @param path:change_info.txt的路径
+     * @param path change_info.txt的路径
      * */
     public static void makeClassSelection(String path) throws Exception{
 
@@ -287,6 +287,7 @@ public class Select {
         HashSet<String> res = new HashSet<>();
         Hashtable<String, Set<String>> methodsUnderTestClass = recordMethodsUnderTestClass(testMethods);
 
+        // 遍历所有的改变影响到的class
         for (String classChanged : classChangeSet) {
             //该测试类下的所有测试方法都要选中
             if(methodsUnderTestClass.get(classChanged)!=null) {
@@ -296,16 +297,10 @@ public class Select {
             }
         }
 
-
         // 写入文件selection-class.txt
         Iterator iterator = res.iterator();
-        String re, re_class;
         while (iterator.hasNext()){
-            re = (String) iterator.next();
-            temp = re.split("\\.");
-            // 转换格式
-            re_class = "L" + temp[0] + "/" + temp[1] + "/" + temp[2];
-            bufferedWriter.write(String.format("%s\r\n",re));
+            bufferedWriter.write(String.format("%s\r\n",iterator.next()));
             bufferedWriter.flush();
         }
         bufferedWriter.close();
@@ -332,7 +327,7 @@ public class Select {
 
     /**
      * 创建selection-method.txt
-     * @param path:change_info.txt的路径
+     * @param path change_info.txt的路径
      * */
     public static void makeMethodSelection(String path) throws Exception{
         Map<String, HashSet<String>> changeInfo = readChangeInfo(path);

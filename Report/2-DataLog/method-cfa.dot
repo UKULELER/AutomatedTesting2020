@@ -1,11 +1,11 @@
 digraph method {
 	"net.mooctest.Argument.variable(Lnet/mooctest/Variable;)Lnet/mooctest/Argument;" -> "net.mooctest.DatalogTest1.testDatalog2()V";
-	"net.mooctest.Fact.getPredicate()Lnet/mooctest/Predicate;" -> "net.mooctest.Datalog.substituteTo(Lnet/mooctest/Fact;)Lnet/mooctest/Substitution;";
-	"net.mooctest.Fact.getPredicate()Lnet/mooctest/Predicate;" -> "net.mooctest.Program.canDerive(Lnet/mooctest/Fact;[Lnet/mooctest/Fact;)Z";
 	"net.mooctest.Predicate.equals(Ljava/lang/Object;)Z" -> "net.mooctest.Datalog.substituteTo(Lnet/mooctest/Fact;)Lnet/mooctest/Substitution;";
 	"net.mooctest.Predicate.equals(Ljava/lang/Object;)Z" -> "net.mooctest.Datalog.equals(Ljava/lang/Object;)Z";
 	"net.mooctest.Predicate.equals(Ljava/lang/Object;)Z" -> "net.mooctest.DatalogOtherTest.testPredicate()V";
 	"net.mooctest.Predicate.equals(Ljava/lang/Object;)Z" -> "net.mooctest.Fact.equals(Ljava/lang/Object;)Z";
+	"net.mooctest.Fact.getPredicate()Lnet/mooctest/Predicate;" -> "net.mooctest.Datalog.substituteTo(Lnet/mooctest/Fact;)Lnet/mooctest/Substitution;";
+	"net.mooctest.Fact.getPredicate()Lnet/mooctest/Predicate;" -> "net.mooctest.Program.canDerive(Lnet/mooctest/Fact;[Lnet/mooctest/Fact;)Z";
 	"net.mooctest.Predicate.hashCode()I" -> "net.mooctest.Fact.hashCode()I";
 	"net.mooctest.Predicate.hashCode()I" -> "net.mooctest.Datalog.hashCode()I";
 	"net.mooctest.Predicate.hashCode()I" -> "net.mooctest.DatalogOtherTest.testPredicate()V";
@@ -24,8 +24,8 @@ digraph method {
 	"net.mooctest.Predicate.<init>(Ljava/lang/String;)V" -> "net.mooctest.DatalogTest1.testDatalog2()V";
 	"net.mooctest.Predicate.<init>(Ljava/lang/String;)V" -> "net.mooctest.DatalogOtherTest.<init>()V";
 	"net.mooctest.Predicate.<init>(Ljava/lang/String;)V" -> "net.mooctest.DatalogTest1.testDatalogGets()V";
-	"net.mooctest.Predicate.<init>(Ljava/lang/String;)V" -> "net.mooctest.DatalogTest5.<init>()V";
 	"net.mooctest.Predicate.<init>(Ljava/lang/String;)V" -> "net.mooctest.DatalogOtherTest.testPredicate()V";
+	"net.mooctest.Predicate.<init>(Ljava/lang/String;)V" -> "net.mooctest.DatalogTest5.<init>()V";
 	"net.mooctest.Argument.getValue()Lnet/mooctest/Value;" -> "net.mooctest.Datalog.substituteTo(Lnet/mooctest/Fact;)Lnet/mooctest/Substitution;";
 	"net.mooctest.Argument.getValue()Lnet/mooctest/Value;" -> "net.mooctest.DatalogTest.substituteTo()V";
 	"net.mooctest.Argument.getValue()Lnet/mooctest/Value;" -> "net.mooctest.DatalogTest4.<init>()V";
@@ -67,12 +67,12 @@ digraph method {
 	"net.mooctest.Variable.<init>(Ljava/lang/String;)V" -> "net.mooctest.DatalogTest2.testVariable()V";
 	"net.mooctest.Fact.getValues()[Lnet/mooctest/Value;" -> "net.mooctest.Datalog.substituteTo(Lnet/mooctest/Fact;)Lnet/mooctest/Substitution;";
 	"net.mooctest.Fact.getValues()[Lnet/mooctest/Value;" -> "net.mooctest.Program.canDerive(Lnet/mooctest/Fact;[Lnet/mooctest/Fact;)Z";
-	"net.mooctest.Value.equals(Ljava/lang/Object;)Z" -> "net.mooctest.Datalog.substituteTo(Lnet/mooctest/Fact;)Lnet/mooctest/Substitution;";
-	"net.mooctest.Value.equals(Ljava/lang/Object;)Z" -> "net.mooctest.Substitution.extend(Lnet/mooctest/Variable;Lnet/mooctest/Value;)Lnet/mooctest/Substitution;";
-	"net.mooctest.Value.equals(Ljava/lang/Object;)Z" -> "net.mooctest.DatalogOtherTest.testValue()V";
 	"net.mooctest.Substitution.extend(Lnet/mooctest/Variable;Lnet/mooctest/Value;)Lnet/mooctest/Substitution;" -> "net.mooctest.Datalog.substituteTo(Lnet/mooctest/Fact;)Lnet/mooctest/Substitution;";
 	"net.mooctest.Substitution.extend(Lnet/mooctest/Variable;Lnet/mooctest/Value;)Lnet/mooctest/Substitution;" -> "net.mooctest.DatalogOtherTest.testSubstitution()V";
 	"net.mooctest.Substitution.extend(Lnet/mooctest/Variable;Lnet/mooctest/Value;)Lnet/mooctest/Substitution;" -> "net.mooctest.Substitution.extendAll(Ljava/util/LinkedList;)Ljava/util/LinkedList;";
+	"net.mooctest.Value.equals(Ljava/lang/Object;)Z" -> "net.mooctest.Datalog.substituteTo(Lnet/mooctest/Fact;)Lnet/mooctest/Substitution;";
+	"net.mooctest.Value.equals(Ljava/lang/Object;)Z" -> "net.mooctest.Substitution.extend(Lnet/mooctest/Variable;Lnet/mooctest/Value;)Lnet/mooctest/Substitution;";
+	"net.mooctest.Value.equals(Ljava/lang/Object;)Z" -> "net.mooctest.DatalogOtherTest.testValue()V";
 	"net.mooctest.Variable.getIdentifier()Ljava/lang/String;" -> "net.mooctest.DatalogTest2.testVariable2()V";
 	"net.mooctest.Variable.getIdentifier()Ljava/lang/String;" -> "net.mooctest.DatalogTest2.testVariable()V";
 	"net.mooctest.Fact.<init>(Lnet/mooctest/Predicate;[Lnet/mooctest/Value;)V" -> "net.mooctest.DatalogTest3.testFact()V";
@@ -116,11 +116,11 @@ digraph method {
 	"net.mooctest.Datalog.getArguments()[Lnet/mooctest/Argument;" -> "net.mooctest.Substitution.applyOn(Lnet/mooctest/Datalog;)Lnet/mooctest/Datalog;";
 	"net.mooctest.Variable.hashCode()I" -> "net.mooctest.DatalogTest2.testVariable3()V";
 	"net.mooctest.Variable.hashCode()I" -> "net.mooctest.DatalogOtherTest.testVariable3()V";
-	"net.mooctest.Fact.toString()Ljava/lang/String;" -> "net.mooctest.DatalogTest3.testFact()V";
-	"net.mooctest.Argument.isVariable()Z" -> "net.mooctest.Substitution.applyOn(Lnet/mooctest/Datalog;)Lnet/mooctest/Datalog;";
 	"net.mooctest.Substitution.<init>()V" -> "net.mooctest.Datalog.substituteTo(Lnet/mooctest/Fact;)Lnet/mooctest/Substitution;";
 	"net.mooctest.Substitution.<init>()V" -> "net.mooctest.DatalogOtherTest.testSubstitution()V";
 	"net.mooctest.Substitution.<init>()V" -> "net.mooctest.Rule.findAllSubstitutions(Ljava/util/Collection;Ljava/util/LinkedList;)Ljava/util/LinkedList;";
+	"net.mooctest.Fact.toString()Ljava/lang/String;" -> "net.mooctest.DatalogTest3.testFact()V";
+	"net.mooctest.Argument.isVariable()Z" -> "net.mooctest.Substitution.applyOn(Lnet/mooctest/Datalog;)Lnet/mooctest/Datalog;";
 	"net.mooctest.Argument.value(Lnet/mooctest/Value;)Lnet/mooctest/Argument;" -> "net.mooctest.DatalogTest1.test()V";
 	"net.mooctest.Argument.value(Lnet/mooctest/Value;)Lnet/mooctest/Argument;" -> "net.mooctest.DatalogTest1.testDatalogSames()V";
 	"net.mooctest.Argument.value(Lnet/mooctest/Value;)Lnet/mooctest/Argument;" -> "net.mooctest.Program.valToArg([Lnet/mooctest/Value;)[Lnet/mooctest/Argument;";
@@ -138,9 +138,9 @@ digraph method {
 	"net.mooctest.Datalog.hashCode()I" -> "net.mooctest.DatalogTest.hashCodeTest()V";
 	"net.mooctest.Rule.findAllSubstitutions(Ljava/util/Collection;Ljava/util/LinkedList;)Ljava/util/LinkedList;" -> "net.mooctest.Rule.deriveOnce(Ljava/util/Collection;)Ljava/util/LinkedList;";
 	"net.mooctest.Rule.findAllSubstitutions(Ljava/util/Collection;Ljava/util/LinkedList;)Ljava/util/LinkedList;" -> "net.mooctest.Rule.findAllSubstitutions(Ljava/util/Collection;Ljava/util/LinkedList;)Ljava/util/LinkedList;";
-	"net.mooctest.Rule.getBody()[Lnet/mooctest/Datalog;" -> "net.mooctest.DatalogOtherTest.testRule()V";
 	"net.mooctest.Datalog.toString()Ljava/lang/String;" -> "net.mooctest.Rule.toString()Ljava/lang/String;";
 	"net.mooctest.Datalog.toString()Ljava/lang/String;" -> "net.mooctest.DatalogTest1.testDatalog2()V";
+	"net.mooctest.Rule.getBody()[Lnet/mooctest/Datalog;" -> "net.mooctest.DatalogOtherTest.testRule()V";
 	"net.mooctest.Value.toString()Ljava/lang/String;" -> "net.mooctest.Argument.toString()Ljava/lang/String;";
 	"net.mooctest.Value.toString()Ljava/lang/String;" -> "net.mooctest.Fact.toString()Ljava/lang/String;";
 	"net.mooctest.Value.toString()Ljava/lang/String;" -> "net.mooctest.DatalogOtherTest.testValue()V";
