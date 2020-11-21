@@ -142,6 +142,32 @@ public class Select {
     }
 
     /**
+     * 得到所有的测试方法
+     */
+    public static Set<String> getSignatureOfTestMethods(CHACallGraph cg) {
+        Set<String> testMethods = new HashSet<String>();
+        for (CGNode node : cg) {
+            if (node.getMethod() instanceof ShrikeBTMethod) {
+                // node.getMethod()返回一个比较泛化的IMethod实例，不能获取到我们想要的信息
+                ShrikeBTMethod method = (ShrikeBTMethod) node.getMethod();
+                // 使用Primordial类加载器加载的类都属于Java原生类，我们一般不关心。
+                if ("Application".equals(method.getDeclaringClass().getClassLoader().toString())) {
+                    String classInnerName = method.getDeclaringClass().getName().toString();
+                    String signature = method.getSignature();
+                    //用反射机制拿到@Test注解来判断是不是测试方法
+                    if (isTest(method)) {
+                        testMethods.add(classInnerName + " " + signature);
+                    }
+                }
+            } else {
+                System.out.println(String.format("'%s'不是一个ShrikeBTMethod：%s", node.getMethod(), node.getMethod().getClass()));
+            }
+        }
+        return testMethods;
+    }
+
+
+    /**
      * 创建class-cfa.dot，通过读取method-cfa.dot文件来生成class-cfa.dot
      * */
     public static void makeClassDot() throws Exception{
@@ -467,32 +493,6 @@ public class Select {
             }
         }
         return false;
-    }
-
-
-    /**
-     * 得到所有的测试方法
-     */
-    public static Set<String> getSignatureOfTestMethods(CHACallGraph cg) {
-        Set<String> testMethods = new HashSet<String>();
-        for (CGNode node : cg) {
-            if (node.getMethod() instanceof ShrikeBTMethod) {
-                // node.getMethod()返回一个比较泛化的IMethod实例，不能获取到我们想要的信息
-                ShrikeBTMethod method = (ShrikeBTMethod) node.getMethod();
-                // 使用Primordial类加载器加载的类都属于Java原生类，我们一般不关心。
-                if ("Application".equals(method.getDeclaringClass().getClassLoader().toString())) {
-                    String classInnerName = method.getDeclaringClass().getName().toString();
-                    String signature = method.getSignature();
-                    //用反射机制拿到@Test注解来判断是不是测试方法
-                    if (isTest(method)) {
-                        testMethods.add(classInnerName + " " + signature);
-                    }
-                }
-            } else {
-                System.out.println(String.format("'%s'不是一个ShrikeBTMethod：%s", node.getMethod(), node.getMethod().getClass()));
-            }
-        }
-        return testMethods;
     }
 
 }
