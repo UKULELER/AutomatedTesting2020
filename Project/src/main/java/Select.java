@@ -51,7 +51,7 @@ public class Select {
 
     /**
      * 创建 method-cfa.dot
-     * @param target
+     * @param target target路径
      * */
     public static void makeMethodDot(String target) throws Exception{
 
@@ -138,14 +138,13 @@ public class Select {
         bufferedWriter.close();
 
         System.out.println("method-cfa.dot is ready.");
-        return;
     }
 
     /**
      * 得到所有的测试方法
      */
     public static Set<String> getSignatureOfTestMethods(CHACallGraph cg) {
-        Set<String> testMethods = new HashSet<String>();
+        Set<String> testMethods = new HashSet<>();
         for (CGNode node : cg) {
             if (node.getMethod() instanceof ShrikeBTMethod) {
                 // node.getMethod()返回一个比较泛化的IMethod实例，不能获取到我们想要的信息
@@ -242,7 +241,7 @@ public class Select {
     public static void makeClassSelection(String path) throws Exception{
 
         HashSet<String> classChangeSet = new HashSet<>();
-        String line, caller_origin, caller_class, callee;
+        String line, caller_origin, callee;
         String[] temp;
 
         Map<String, HashSet<String>> changeInfo = readChangeInfo(path);
